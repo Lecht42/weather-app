@@ -4,7 +4,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <NavBar />
-      <main>{children}</main>
+      <main className="flex justify-center justify-items-center">{children}</main>
     </>
   );
 }
