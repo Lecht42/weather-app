@@ -1,6 +1,7 @@
+import { Person } from "@/lib/intefaces";
 import { Envelope, GenderMale, GlobeEuropeAfrica, PersonCircle } from "react-bootstrap-icons";
 
-export default function PersonCard() {
+export default function PersonCard(props : Person) {
   return (
     <div className="grid grid-cols-2 bg-white rounded w-96 m-2 text-basic">
       <div className="flex flex-inline">

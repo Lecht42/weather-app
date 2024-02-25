@@ -3,6 +3,23 @@ export interface Coordinates {
     longitude: number;
 }
 
+export interface PersonJsonResult {
+  name: {
+    first: string;
+    last: string;
+  };
+  gender: string;
+  email: string;
+  location: {
+    country: string;
+    city: string;
+  };
+  picture: {
+    thumbnail: string;
+  };
+  coordinates: Coordinates; 
+}
+
 export interface Person {
     name: string;
     gender: string;

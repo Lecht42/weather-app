@@ -9,7 +9,7 @@ const usersSlice = createSlice({
   },
   reducers: {
     addPersons: (state, action) => {
-        if(action.payload.isArray()){
+        if(Array.isArray(action.payload)){
             state.persons = state.persons.concat(action.payload);
         } else {
             state.persons.push(action.payload);
