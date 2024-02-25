@@ -1,16 +1,16 @@
-import UserCard from "../_components/user-card/user-card";
+import PersonCard from "../_components/person-card/person-card";
 import Layout from "../page";
 
 export default function Saved({ children }: { children: React.ReactNode }) {
   return (
     <Layout>
       <div className="inline-flex justify-center flex-wrap w-max">
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
+       <PersonCard/ > 
+       <PersonCard/ > 
+       <PersonCard/ > 
+       <PersonCard/ > 
+       <PersonCard/ > 
+       <PersonCard/ > 
       </div>
     </Layout>
   );

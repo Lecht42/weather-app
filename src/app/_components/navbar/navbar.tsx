@@ -7,7 +7,7 @@ export default function NavBar() {
         <ul className="flex justify-center p-6">
           <li>
             <Link className="p-4" href="/">
-                Users 
+                Persons 
             </Link>
           </li>
           <li>

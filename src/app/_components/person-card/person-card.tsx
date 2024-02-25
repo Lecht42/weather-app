@@ -1,6 +1,6 @@
 import { Envelope, GenderMale, GlobeEuropeAfrica, PersonCircle } from "react-bootstrap-icons";
 
-export default function UserCard() {
+export default function PersonCard() {
   return (
     <div className="grid grid-cols-2 bg-white rounded w-96 m-2 text-basic">
       <div className="flex flex-inline">
