@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Person } from "../intefaces";
+import { Person } from "../../intefaces";
 
 const usersSlice = createSlice({
   name: 'persons',
