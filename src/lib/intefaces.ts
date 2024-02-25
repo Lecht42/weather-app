@@ -15,7 +15,7 @@ export interface PersonJsonResult {
     city: string;
   };
   picture: {
-    thumbnail: string;
+    large: string;
   };
   coordinates: Coordinates; 
 }
@@ -26,5 +26,5 @@ export interface Person {
     location: string;
     email: string;
     photoUrl: string;
-    coordinates: Coordinates;
+    coordinates?: Coordinates;
 }

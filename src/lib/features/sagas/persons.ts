@@ -20,7 +20,7 @@ function* fetchPersons(action: {
         gender: e.gender,
         email: e.email,
         location: `${e.location.country}, ${e.location.city}`,
-        photoUrl: e.picture.thumbnail,
+        photoUrl: e.picture.large,
         coordinates: e.coordinates,
       };
     });
