@@ -1,24 +1,44 @@
 import { Person } from "@/lib/intefaces";
-import { Envelope, GenderMale, GlobeEuropeAfrica, PersonCircle } from "react-bootstrap-icons";
+import Image from "next/image";
+import {
+  Envelope,
+  GenderFemale,
+  GenderMale,
+  GlobeEuropeAfrica,
+} from "react-bootstrap-icons";
 
-export default function PersonCard(props : Person) {
+export default function PersonCard(props: Person) {
+  const genderIconSize = 26,
+    photoSize = 80;
+
   return (
-    <div className="grid grid-cols-2 bg-white rounded w-96 m-2 text-basic">
-      <div className="flex flex-inline">
-        <PersonCircle className="w-3 m-1" />
-        Name Surname
+    <div className="bg-white drop-shadow rounded w-96 p-4 m-2">
+      <div className="grid grid-cols-3 gap-2 mb-4">
+        <div>
+          <Image
+            className="m-2 rounded-full"
+            src={props.photoUrl}
+            width={photoSize}
+            height={photoSize}
+            alt={""}
+          />
+        </div>
+        <div className="flex flex-col justify-center text-lg font-medium">{props.name}</div>
+        <div className="flex flex-inline justify-end">
+          {props.gender === "male" ? (
+            <GenderMale size={genderIconSize} />
+          ) : (
+            <GenderFemale size={genderIconSize} />
+          )}
+        </div>
       </div>
-      <div className="flex justify-content-center flex-inline">
-        <GenderMale className="w-3 m-1" />
-        Gender
+      <div className="flex flex-inline">
+        <GlobeEuropeAfrica className="w-4 m-1" />
+        {props.location}
       </div>
       <div className="flex flex-inline">
-        <Envelope className="w-3 m-1" />
-        Email
-      </div>
-      <div className="flex flex-inline">
-        <GlobeEuropeAfrica className="w-3 m-1" />
-        Location
+        <Envelope className="w-4 m-1" />
+        {props.email}
       </div>
     </div>
   );

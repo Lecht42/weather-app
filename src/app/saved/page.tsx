@@ -1,10 +1,8 @@
 "use client";
 
-import { useAppDispatch, useAppSelector, useAppStore } from "@/lib/hooks";
+import { useAppSelector } from "@/lib/hooks";
 import PersonCard from "../_components/person-card/person-card";
 import Layout from "../page";
-import { useRef } from "react";
-import { Person } from "@/lib/intefaces";
 
 export default function Saved({ children }: { children: React.ReactNode }) {
   const cards = useAppSelector((state) => state.persons).persons;
@@ -15,12 +13,11 @@ export default function Saved({ children }: { children: React.ReactNode }) {
         {cards.map((e, i) => (
           <PersonCard
             key={i}
-            name={""}
-            gender={""}
-            location={""}
-            email={""}
-            photoUrl={""}
-            coordinates={undefined}
+            name={e.name}
+            gender={e.gender}
+            location={e.location}
+            email={e.email}
+            photoUrl={e.photoUrl}
           />
         ))}
       </div>
