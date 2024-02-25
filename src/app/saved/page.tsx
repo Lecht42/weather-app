@@ -9,7 +9,7 @@ export default function Saved({ children }: { children: React.ReactNode }) {
 
   return (
     <Layout>
-      <div className="inline-flex justify-center flex-wrap w-max">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-6 my-6 ">
         {cards.map((e, i) => (
           <PersonCard
             key={i}

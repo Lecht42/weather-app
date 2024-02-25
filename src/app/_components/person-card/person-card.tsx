@@ -12,7 +12,7 @@ export default function PersonCard(props: Person) {
     photoSize = 80;
 
   return (
-    <div className="bg-white drop-shadow rounded w-96 p-4 m-2">
+    <div className="bg-white drop-shadow rounded w-96 p-4">
       <div className="grid grid-cols-3 gap-2 mb-4">
         <div>
           <Image
