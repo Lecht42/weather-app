@@ -6,12 +6,12 @@ export default function NavBar() {
       <nav>
         <ul className="flex justify-center p-6">
           <li>
-            <Link className="p-4" href="/">
+            <Link className="p-4" href="/persons">
                 Persons 
             </Link>
           </li>
           <li>
-            <Link className="p-4" href="/saved">
+            <Link className="p-4" href="/saved-persons">
               Saved
             </Link>
           </li>
