@@ -65,6 +65,4 @@ export default function* personsSaga(): SagaIterator {
   yield takeLatest(tryFetchPersons.type, fetchPersons);
   yield takeLatest(tryLoadPersons.type, loadPersons);
   yield takeLatest(trySavePerson.type, savePerson);
-  yield takeLatest(tryLoadPersons.type, loadPersons);
-  yield takeLatest(trySavePerson.type, savePerson);
 }

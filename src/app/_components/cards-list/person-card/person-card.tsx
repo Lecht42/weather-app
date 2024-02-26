@@ -1,17 +1,12 @@
 import {
-  tryDeleteSavedPerson,
   trySavePerson,
 } from "@/lib/features/actions/saga-actions";
 import { useAppDispatch } from "@/lib/hooks";
 import { Person } from "@/lib/intefaces";
 import Image from "next/image";
 import {
-  Check,
   CheckCircleFill,
-  CheckLg,
-  CheckSquare,
   Envelope,
-  Floppy,
   FloppyFill,
   GenderFemale,
   GenderMale,
@@ -67,7 +62,7 @@ export default function PersonCard({
           <GlobeEuropeAfrica className="w-4 m-1" />
           {location}
         </div>
-        <div className="flex items-center">
+        <div className="flex flex-inline">
           <Envelope className="w-4 m-1" />
           {email}
         </div>

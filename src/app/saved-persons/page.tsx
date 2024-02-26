@@ -1,7 +1,6 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Layout from "../page";
 import CardList from "../_components/cards-list/card-list";
 import { useEffect } from "react";
@@ -13,12 +12,6 @@ export default function SavedPersonsPage({
 }: {
   children: React.ReactNode;
 }) {
-  const dispatch = useAppDispatch();
-  const savedPersons = useAppSelector((state) => state.persons).persons;
-
-  useEffect(() => {
-    dispatch(tryLoadPersons(null));
-  }, [dispatch]);
   const dispatch = useAppDispatch();
   const savedPersons = useAppSelector((state) => state.persons).persons;
 
