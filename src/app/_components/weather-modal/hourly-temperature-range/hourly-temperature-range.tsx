@@ -9,7 +9,7 @@ export interface TemperatureRangeProps {
 export default function HourlyTemperatureRange({
   temperatures,
 }: TemperatureRangeProps) {
-  const [value, setValue] = useState(temperatures[0]);
+  const [value, setValue] = useState(0);
   const [temp, setTemp] = useState(0);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +29,7 @@ export default function HourlyTemperatureRange({
         onChange={handleChange}
         className="w-full"
       />
+      <Temperature temperature={temp} label={convertNumberToTime(value)} />
       <Temperature temperature={temp} label={convertNumberToTime(value)} />
     </div>
   );

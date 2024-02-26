@@ -7,7 +7,7 @@ interface TemperatureProps {
 export default function Temperature({
   temperature,
   label,
-  className,
+  className = "",
 }: TemperatureProps) {
   return (
     <div className={`flex grow items-center flex-col ${className}`}>
