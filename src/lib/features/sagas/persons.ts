@@ -85,7 +85,7 @@ function* savePerson(action: {
   payload: Person;
 }): SagaIterator {
   try {
-    Storage.savePerson(action.payload);
+    Storage.savePerson({ ...action.payload, saved: true});
   } catch (e: unknown) {
     yield put({ type: "PERSON_SAVE_FAILED", error: e });
   }

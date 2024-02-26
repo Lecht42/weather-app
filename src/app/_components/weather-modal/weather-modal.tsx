@@ -1,15 +1,18 @@
-import { Fragment, MouseEventHandler, useRef, useState } from "react";
+import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Person } from "@/lib/intefaces";
 import Temperature from "./temperature/temperature";
 import Image from "next/image";
 import Map from "../map/map";
 import HourlyTemperatureRange from "./hourly-temperature-range/hourly-temperature-range";
+import { XLg } from "react-bootstrap-icons";
 
 export interface WeatherModalProps extends Person {
   setOpen: (value: boolean) => void;
   open: boolean;
 }
+
+const WEATHER_ICON_SIZE = 100;
 
 export default function WeatherModal({
   photoUrl,
@@ -19,8 +22,6 @@ export default function WeatherModal({
   open,
 }: WeatherModalProps) {
   const cancelButtonRef = useRef(null);
-
-  const [hourlyTemp, setHourlyTemp] = useState(weather!.hourlyTemp[3]);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -54,28 +55,36 @@ export default function WeatherModal({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                <div className="bg-white px-8 pb-4 pt-5">
-                  <div className="flex justify-between">
+                <div className="bg-white px-4 pb-4 pt-5">
+                  <div className="flex flex-row-reverse">
+                    <XLg
+                      onClick={() => setOpen(false)}
+                      className="cursor-pointer mb-4"
+                      size={24}
+                    />
+                  </div>
+                  <div className="flex bg-slate-50 items-center">
                     <Image
-                      width={120}
-                      height={120}
+                      width={WEATHER_ICON_SIZE}
+                      height={WEATHER_ICON_SIZE}
                       src={weather!.weatherIconUrl}
                       alt="Icon of weather"
                     />
+                    <Temperature temperature={weather!.temp} />
+                    <label className="flex flex-col grow items-center text-lg">
+                      {`${coordinates.latitude}, ${coordinates.longitude}`}
+                      <label className="text-xs  opacity-50">coordinates</label>
+                    </label>
                   </div>
-                  <div className="flex flex-inline">
-                    <div className="flex grow items-center flex-col">
+
+                  <div className="p-7">
+                    <HourlyTemperatureRange
+                      temperatures={weather!.hourlyTemp}
+                    />
+                    <div className="flex justify-around mt-4">
                       <Temperature temperature={weather!.minTemp} label="min" />
-                    </div>
-                    <div className="flex grow items-center flex-col">
-                      <Temperature temperature={weather!.temp} label="cur" />
-                    </div>
-                    <div className="flex grow items-center flex-col">
                       <Temperature temperature={weather!.maxTemp} label="max" />
                     </div>
-                  </div>
-                  <div className="p-7">
-                    <HourlyTemperatureRange temperatures={weather!.hourlyTemp} /> 
                   </div>
                   <Map coordinates={coordinates} photoUrl={photoUrl} />
                 </div>

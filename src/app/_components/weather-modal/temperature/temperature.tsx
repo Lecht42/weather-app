@@ -10,7 +10,7 @@ export default function Temperature({
   className = "",
 }: TemperatureProps) {
   return (
-    <div className={`flex grow items-center flex-col ${className}`}>
+    <div className={`flex items-center flex-col ${className}`}>
       <label className="text-xl">{`${temperature}°C`}</label>
       {label && <label className="text-sm opacity-45">{label}</label>}
     </div>

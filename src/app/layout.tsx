@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./store-provider";
+import dotenv from "dotenv";
+dotenv.config();
 
 const inter = Inter({ subsets: ["latin"] });
 

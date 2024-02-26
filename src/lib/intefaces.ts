@@ -52,9 +52,5 @@ export interface Person {
   photoUrl: string;
   coordinates: Coordinates;
   weather?: Weather;
-}
-
-export enum CardMode {
-  Default,
-  Saved,
+  saved?: boolean;
 }

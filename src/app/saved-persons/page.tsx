@@ -5,7 +5,6 @@ import Layout from "../page";
 import CardList from "../_components/cards-list/card-list";
 import { useEffect } from "react";
 import { tryLoadPersons } from "@/lib/features/actions/saga-actions";
-import { CardMode } from "@/lib/intefaces";
 
 export default function SavedPersonsPage({
   children,
@@ -21,7 +20,7 @@ export default function SavedPersonsPage({
 
   return (
     <Layout>
-      <CardList persons={savedPersons} mode={CardMode.Saved} />
+      <CardList persons={savedPersons} />
     </Layout>
   );
 }

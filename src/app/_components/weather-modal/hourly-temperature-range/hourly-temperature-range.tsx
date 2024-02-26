@@ -10,7 +10,7 @@ export default function HourlyTemperatureRange({
   temperatures,
 }: TemperatureRangeProps) {
   const [value, setValue] = useState(0);
-  const [temp, setTemp] = useState(0);
+  const [temp, setTemp] = useState(temperatures[0]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(Number(e.target.value));
@@ -18,8 +18,8 @@ export default function HourlyTemperatureRange({
   };
 
   return (
-    <div>
-      <label className="text-xl">Hourly temperature</label>
+    <div className="flex flex-col items-center">
+      <label className="text-xl my-2">Hourly temperature</label>
       <input
         type="range"
         id="rangeSlider"

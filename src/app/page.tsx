@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <NavBar />
       <LoadScript
-        googleMapsApiKey=""
+        googleMapsApiKey={process.env.GOOGLE_MAP_API_KEY || ""}
       >
         <main>{children}</main>
       </LoadScript>
