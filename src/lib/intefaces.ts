@@ -3,6 +3,30 @@ export interface Coordinates {
   longitude: number;
 }
 
+export interface WeatherResult {
+  latitude: number;
+  longitude: number;
+  current: {
+    temperature2m: number;
+    weatherCode: number;
+  };
+  hourly: {
+    temperature2m: number[];
+  };
+  daily: {
+    temperature2mMax: number[];
+    temperature2mMin: number[];
+  };
+}
+
+export interface Weather {
+  temp: number;
+  minTemp: number;
+  maxTemp: number;
+  weatherIconUrl: string;
+  hourlyTemp: number[];
+}
+
 export interface PersonJsonResult {
   name: {
     first: string;
@@ -13,11 +37,11 @@ export interface PersonJsonResult {
   location: {
     country: string;
     city: string;
+    coordinates: Coordinates;
   };
   picture: {
     large: string;
   };
-  coordinates: Coordinates;
 }
 
 export interface Person {
@@ -26,7 +50,8 @@ export interface Person {
   location: string;
   email: string;
   photoUrl: string;
-  coordinates?: Coordinates;
+  coordinates: Coordinates;
+  weather?: Weather;
 }
 
 export enum CardMode {

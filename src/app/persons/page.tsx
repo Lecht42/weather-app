@@ -5,7 +5,6 @@ import Layout from "../page";
 import CardList from "../_components/cards-list/card-list";
 import {
   tryFetchPersons,
-  tryLoadPersons,
 } from "@/lib/features/actions/saga-actions";
 import { useEffect } from "react";
 import { clearPersons } from "@/lib/features/persons/persons-slice";
@@ -28,6 +27,7 @@ export default function PersonsPage({
 
   return (
     <Layout>
+      
       <CardList persons={persons} />
       <div className="flex justify-center items-center h-32">
         <Button onClick={onLoadMoreClickHandler} className="text-xl">
