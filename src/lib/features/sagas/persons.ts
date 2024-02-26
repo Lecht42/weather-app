@@ -1,9 +1,14 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { SagaIterator } from "redux-saga";
 import Api from "../../classes/api";
-import { tryFetchPersons, tryLoadPersons, trySavePerson } from "../actions/saga-actions";
+import {
+  tryFetchPersons,
+  tryLoadPersons,
+  trySavePerson,
+} from "../actions/saga-actions";
 import { addPersons, setPersons } from "../persons/persons-slice";
 import { Person, PersonJsonResult } from "@/lib/intefaces";
+import Storage from "@/lib/classes/storage";
 
 function* fetchPersons(action: {
   type: typeof tryFetchPersons.type;
@@ -25,6 +30,7 @@ function* fetchPersons(action: {
       };
     });
 
+
     yield put({ type: addPersons.type, payload });
   } catch (e: unknown) {
     yield put({ type: "PERSONS_FETCH_FAILED", error: e });
@@ -36,9 +42,8 @@ function* loadPersons(action: {
   payload: null;
 }): SagaIterator {
   try {
-    const saved = localStorage.getItem("saved");
-    const payload: Person[] = saved ? JSON.parse(saved) : [];
-
+    const payload: Person[] = Storage.loadPersons();
+    
     yield put({ type: setPersons.type, payload });
   } catch (e: unknown) {
     yield put({ type: "PERSONS_LOAD_FAILED", error: e });
@@ -50,11 +55,7 @@ function* savePerson(action: {
   payload: Person;
 }): SagaIterator {
   try {
-    const saved = localStorage.getItem("saved");
-    const loaded: Person[] = saved ? JSON.parse(saved) : [];
-    loaded.push(action.payload);
-
-    localStorage.setItem("saved", JSON.stringify(loaded))
+    Storage.savePerson(action.payload);
   } catch (e: unknown) {
     yield put({ type: "PERSON_SAVE_FAILED", error: e });
   }
@@ -62,6 +63,8 @@ function* savePerson(action: {
 
 export default function* personsSaga(): SagaIterator {
   yield takeLatest(tryFetchPersons.type, fetchPersons);
+  yield takeLatest(tryLoadPersons.type, loadPersons);
+  yield takeLatest(trySavePerson.type, savePerson);
   yield takeLatest(tryLoadPersons.type, loadPersons);
   yield takeLatest(trySavePerson.type, savePerson);
 }

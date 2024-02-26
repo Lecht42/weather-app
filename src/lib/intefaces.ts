@@ -1,6 +1,6 @@
 export interface Coordinates {
-    latitude: number;
-    longitude: number;
+  latitude: number;
+  longitude: number;
 }
 
 export interface PersonJsonResult {
@@ -17,14 +17,19 @@ export interface PersonJsonResult {
   picture: {
     large: string;
   };
-  coordinates: Coordinates; 
+  coordinates: Coordinates;
 }
 
 export interface Person {
-    name: string;
-    gender: string;
-    location: string;
-    email: string;
-    photoUrl: string;
-    coordinates?: Coordinates;
+  name: string;
+  gender: string;
+  location: string;
+  email: string;
+  photoUrl: string;
+  coordinates?: Coordinates;
+}
+
+export enum CardMode {
+  Default,
+  Saved,
 }
