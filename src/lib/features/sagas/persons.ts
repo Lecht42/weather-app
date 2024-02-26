@@ -30,7 +30,6 @@ function* fetchPersons(action: {
       };
     });
 
-
     yield put({ type: addPersons.type, payload });
   } catch (e: unknown) {
     yield put({ type: "PERSONS_FETCH_FAILED", error: e });
