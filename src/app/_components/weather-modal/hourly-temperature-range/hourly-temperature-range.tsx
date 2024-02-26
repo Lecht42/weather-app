@@ -10,11 +10,11 @@ export default function HourlyTemperatureRange({
   temperatures,
 }: TemperatureRangeProps) {
   const [value, setValue] = useState(temperatures[0]);
-  const [hour, setHour] = useState(0);
+  const [temp, setTemp] = useState(0);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(Number(e.target.value));
-    setHour(Number(e.target.value));
+    setTemp(temperatures[Number(e.target.value)]);
   };
 
   return (
@@ -29,7 +29,7 @@ export default function HourlyTemperatureRange({
         onChange={handleChange}
         className="w-full"
       />
-      <Temperature temperature={value} label={convertNumberToTime(hour)} />
+      <Temperature temperature={temp} label={convertNumberToTime(value)} />
     </div>
   );
 }
