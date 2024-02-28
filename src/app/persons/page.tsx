@@ -11,6 +11,7 @@ import {
 import { useEffect } from "react";
 import { clearPersons } from "@/lib/features/persons/persons-slice";
 import Button from "../_components/buttons/button";
+import CircularProgressBar from "../_components/progress-bars/circular-progress-bar";
 
 export default function PersonsPage({
   children,
@@ -34,6 +35,13 @@ export default function PersonsPage({
   }, []);
 
   const onLoadMoreClickHandler = () => dispatch(tryFetchPersons(12));
+
+  if (!persons)
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <CircularProgressBar />
+      </div>
+    );
 
   return (
     <Layout>

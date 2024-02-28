@@ -20,6 +20,7 @@ export default function HourlyTemperatureRange({
   return (
     <div className="flex flex-col items-center">
       <label className="text-xl my-2">Hourly temperature</label>
+      <Temperature temperature={temp} label={convertNumberToTime(value)} />
       <input
         type="range"
         id="rangeSlider"
@@ -29,8 +30,6 @@ export default function HourlyTemperatureRange({
         onChange={handleChange}
         className="w-full"
       />
-      <Temperature temperature={temp} label={convertNumberToTime(value)} />
-      <Temperature temperature={temp} label={convertNumberToTime(value)} />
     </div>
   );
 }
