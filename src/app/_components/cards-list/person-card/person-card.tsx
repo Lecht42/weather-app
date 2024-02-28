@@ -11,9 +11,9 @@ import {
   GenderMale,
   GlobeEuropeAfrica,
 } from "react-bootstrap-icons";
-import SecondaryButton from "../../buttons/secondary-button";
 import { useState } from "react";
 import WeatherModal from "../../weather-modal/weather-modal";
+import CardButton from "../../buttons/card-button";
 
 const BUTTON_ICON_SIZE = 16;
 const GENDER_ICON_SIZE = 26;
@@ -64,7 +64,7 @@ export default function PersonCard(props: PersonCardProps) {
           </div>
         </div>
         <div className="flex justify-between mt-4">
-          <SecondaryButton
+          <CardButton
             onClick={onSaveClickHandler}
             disabled={saved}
             className="w-32"
@@ -82,13 +82,13 @@ export default function PersonCard(props: PersonCardProps) {
                 </>
               )}
             </div>
-          </SecondaryButton>
-          <SecondaryButton onClick={() => setModalVisible(true)}>
+          </CardButton>
+          <CardButton onClick={() => setModalVisible(true)}>
             <div className="flex flex-inline">
               <CloudSunFill size={BUTTON_ICON_SIZE} className="m-1" />
               Weather
             </div>
-          </SecondaryButton>
+          </CardButton>
         </div>
       </div>
       <WeatherModal open={modalVisible} setOpen={setModalVisible} {...props} />

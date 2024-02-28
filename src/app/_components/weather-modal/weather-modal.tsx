@@ -65,7 +65,7 @@ export default function WeatherModal({
                       size={24}
                     />
                   </div>
-                  <div className="flex bg-slate-50 items-center">
+                  <div className="flex items-center">
                     <Image
                       width={WEATHER_ICON_SIZE}
                       height={WEATHER_ICON_SIZE}
