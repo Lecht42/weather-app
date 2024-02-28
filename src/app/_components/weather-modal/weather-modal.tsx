@@ -6,6 +6,7 @@ import Image from "next/image";
 import Map from "../map/map";
 import HourlyTemperatureRange from "./hourly-temperature-range/hourly-temperature-range";
 import { XLg } from "react-bootstrap-icons";
+import CircularProgressBar from "../progress-bars/circular-progress-bar";
 
 export interface WeatherModalProps extends Person {
   setOpen: (value: boolean) => void;
@@ -23,15 +24,13 @@ export default function WeatherModal({
 }: WeatherModalProps) {
   const cancelButtonRef = useRef(null);
 
-  if (!weather) return <></>;
-
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-10"
         initialFocus={cancelButtonRef}
-        onClose={setOpen}
+        onClose={() => setOpen(false)}
       >
         <Transition.Child
           as={Fragment}
@@ -44,19 +43,18 @@ export default function WeatherModal({
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
-
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
-              enterFrom="opacity-0 translate-y-4 sm:translate-y-0"
-              enterTo="opacity-100 translate-y-0"
+              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              enterTo="opacity-100 translate-y-0 sm:scale-100"
               leave="ease-in duration-200"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0"
+              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all my-8 w-full max-w-lg">
                 <div className="bg-white px-4 pb-4 pt-5">
                   <div className="flex flex-row-reverse">
                     <XLg
@@ -65,30 +63,58 @@ export default function WeatherModal({
                       size={24}
                     />
                   </div>
-                  <div className="flex items-center">
-                    <Image
-                      width={WEATHER_ICON_SIZE}
-                      height={WEATHER_ICON_SIZE}
-                      src={weather!.weatherIconUrl}
-                      alt="Icon of weather"
-                    />
-                    <Temperature temperature={weather!.temp} />
-                    <label className="flex flex-col grow items-center text-lg">
-                      {`${coordinates.latitude}, ${coordinates.longitude}`}
-                      <label className="text-xs  opacity-50">coordinates</label>
-                    </label>
-                  </div>
-
-                  <div className="p-7">
-                    <HourlyTemperatureRange
-                      temperatures={weather!.hourlyTemp}
-                    />
-                    <div className="flex justify-around mt-4">
-                      <Temperature temperature={weather!.minTemp} label="min" />
-                      <Temperature temperature={weather!.maxTemp} label="max" />
-                    </div>
-                  </div>
-                  <Map coordinates={coordinates} photoUrl={photoUrl} />
+                  {weather ? (
+                    <>
+                      <div className="flex items-center border-2 rounded-lg my-4 p-2">
+                        <Image
+                          width={WEATHER_ICON_SIZE}
+                          height={WEATHER_ICON_SIZE}
+                          src={weather.weatherIconUrl}
+                          alt="Icon of weather"
+                        />
+                        <Temperature
+                          temperature={weather.temp}
+                          label="current"
+                        />
+                        <div className="flex flex-col grow items-center">
+                          <Temperature
+                            temperature={weather.maxTemp}
+                            label="max"
+                          />
+                          <Temperature
+                            temperature={weather.minTemp}
+                            label="min"
+                          />
+                        </div>
+                        <div className="hidden sm:block">
+                          <div className="flex items-center flex-col">
+                            <label className="text-xl">
+                              {coordinates.latitude}
+                            </label>
+                            <label className="text-sm opacity-45">
+                              latitude
+                            </label>
+                          </div>
+                          <div className="flex items-center flex-col">
+                            <label className="text-xl">
+                              {coordinates.longitude}
+                            </label>
+                            <label className="text-sm opacity-45">
+                              longitude
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-7">
+                        <HourlyTemperatureRange
+                          temperatures={weather.hourlyTemp}
+                        />
+                      </div>
+                      <Map coordinates={coordinates} photoUrl={photoUrl} />
+                    </>
+                  ) : (
+                    <CircularProgressBar />
+                  )}
                 </div>
               </Dialog.Panel>
             </Transition.Child>

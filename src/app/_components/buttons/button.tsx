@@ -10,7 +10,7 @@ export interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   children,
   className = "",
-  disabled = false,
+  disabled,
   onClick,
 }: ButtonProps) => (
   <button

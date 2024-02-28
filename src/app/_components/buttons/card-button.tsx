@@ -4,7 +4,7 @@ import { ButtonProps } from "./button";
 const SecondaryButton: React.FC<ButtonProps> = ({
   children,
   className = "",
-  disabled = false,
+  disabled,
   onClick,
 }: ButtonProps) => (
   <button
