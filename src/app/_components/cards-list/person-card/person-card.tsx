@@ -54,11 +54,11 @@ export default function PersonCard(props: PersonCardProps) {
           </div>
         </div>
         <div className="mt-4">
-          <div className="flex items-center">
+          <div className="flex items-center text-sm md:text-base">
             <GlobeEuropeAfrica className="w-4 m-1" />
             {props.location}
           </div>
-          <div className="flex flex-inline">
+          <div className="flex flex-inline text-sm md:text-base">
             <Envelope className="w-4 m-1" />
             {props.email}
           </div>

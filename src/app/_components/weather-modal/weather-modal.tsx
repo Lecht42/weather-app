@@ -7,6 +7,7 @@ import Map from "../map/map";
 import HourlyTemperatureRange from "./hourly-temperature-range/hourly-temperature-range";
 import { XLg } from "react-bootstrap-icons";
 import CircularProgressBar from "../progress-bars/circular-progress-bar";
+import CommentedValue from "./commented-label/commented label";
 
 export interface WeatherModalProps extends Person {
   setOpen: (value: boolean) => void;
@@ -87,22 +88,8 @@ export default function WeatherModal({
                           />
                         </div>
                         <div className="hidden sm:block">
-                          <div className="flex items-center flex-col">
-                            <label className="text-xl">
-                              {coordinates.latitude}
-                            </label>
-                            <label className="text-sm opacity-45">
-                              latitude
-                            </label>
-                          </div>
-                          <div className="flex items-center flex-col">
-                            <label className="text-xl">
-                              {coordinates.longitude}
-                            </label>
-                            <label className="text-sm opacity-45">
-                              longitude
-                            </label>
-                          </div>
+                         <CommentedValue value={coordinates.latitude} label="latitude" />
+                         <CommentedValue value={coordinates.longitude} label="longitude"/> 
                         </div>
                       </div>
                       <div className="p-7">

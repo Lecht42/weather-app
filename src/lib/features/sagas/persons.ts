@@ -8,7 +8,7 @@ import {
   trySavePerson,
   tryUpdateWeather,
 } from "../actions/saga-actions";
-import { addPersons, clearPersons, setPersons } from "../persons/persons-slice";
+import { addPersons, setPersons } from "../persons/persons-slice";
 import { Person, PersonJsonResult } from "@/lib/intefaces";
 import Storage from "@/lib/classes/storage";
 

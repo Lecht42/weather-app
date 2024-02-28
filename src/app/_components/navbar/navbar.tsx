@@ -1,4 +1,3 @@
-// NavBar.js или NavBar.tsx если используете TypeScript
 import React from 'react';
 import NavLink from './nav-link/nav-link';
 

@@ -2,7 +2,6 @@
 
 import { Person } from "@/lib/intefaces";
 import PersonCard from "./person-card/person-card";
-import CircularProgressBar from "../progress-bars/circular-progress-bar";
 
 interface CardListProps {
   persons: Person[];

@@ -1,4 +1,4 @@
-import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import personsReducer from "./features/persons/persons-slice";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./features/sagas/root-saga";
