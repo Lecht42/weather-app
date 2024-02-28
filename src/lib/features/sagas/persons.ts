@@ -30,6 +30,7 @@ function* fetchPersons(action: {
         location: `${e.location.country}, ${e.location.city}`,
         photoUrl: e.picture.large,
         coordinates: e.location.coordinates,
+        saved: false,
       };
     });
 

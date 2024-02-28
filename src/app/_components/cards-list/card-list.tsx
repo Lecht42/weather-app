@@ -1,5 +1,3 @@
-"use client";
-
 import { Person } from "@/lib/intefaces";
 import PersonCard from "./person-card/person-card";
 

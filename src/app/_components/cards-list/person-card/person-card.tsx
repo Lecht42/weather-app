@@ -11,7 +11,7 @@ import {
   GenderMale,
   GlobeEuropeAfrica,
 } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WeatherModal from "../../weather-modal/weather-modal";
 import CardButton from "../../buttons/card-button";
 
@@ -19,19 +19,19 @@ const BUTTON_ICON_SIZE = 16;
 const GENDER_ICON_SIZE = 26;
 const PHOTO_SIZE = 80;
 
-export interface PersonCardProps extends Person {
-  saved?: boolean;
-}
-
-export default function PersonCard(props: PersonCardProps) {
+export default function PersonCard(props: Person) {
   const dispatch = useAppDispatch();
   const [saved, setSaved] = useState(props.saved);
   const [modalVisible, setModalVisible] = useState(false);
 
   const onSaveClickHandler = () => {
-    dispatch(trySavePerson(props));
     setSaved(true);
+    dispatch(trySavePerson(props));
   };
+
+  useEffect(() => {
+    setSaved(props.saved);
+  }, [props.saved]);
 
   return (
     <>
@@ -44,7 +44,9 @@ export default function PersonCard(props: PersonCardProps) {
             alt={`Photo of ${props.name}`}
             className="m-1 rounded-full"
           />
-          <div className="text-lg font-medium m-2 self-center">{props.name}</div>
+          <div className="text-lg font-medium m-2 self-center">
+            {props.name}
+          </div>
           <div className="flex grow justify-end m-1">
             {props.gender === "male" ? (
               <GenderMale size={GENDER_ICON_SIZE} />

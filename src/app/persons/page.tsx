@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Layout from "../page";
 import CardList from "../_components/cards-list/card-list";
@@ -11,7 +11,6 @@ import {
 import { useEffect } from "react";
 import { clearPersons } from "@/lib/features/persons/persons-slice";
 import Button from "../_components/buttons/button";
-import CircularProgressBar from "../_components/progress-bars/circular-progress-bar";
 
 const NUMBER_OF_FETCHING_PERSONS = 12;
 

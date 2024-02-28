@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Layout from "../page";
 import CardList from "../_components/cards-list/card-list";
@@ -11,7 +11,6 @@ import {
   tryUpdateWeather,
 } from "@/lib/features/actions/saga-actions";
 import { clearPersons } from "@/lib/features/persons/persons-slice";
-import CircularProgressBar from "../_components/progress-bars/circular-progress-bar";
 
 export default function SavedPersonsPage({}: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();

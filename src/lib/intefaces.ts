@@ -52,5 +52,5 @@ export interface Person {
   photoUrl: string;
   coordinates: Coordinates;
   weather?: Weather;
-  saved?: boolean;
+  saved: boolean;
 }
