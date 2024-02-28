@@ -14,11 +14,7 @@ import CircularProgressBar from "../_components/progress-bars/circular-progress-
 
 const NUMBER_OF_FETCHING_PERSONS = 12;
 
-export default function PersonsPage({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PersonsPage({}: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
   const persons = useAppSelector((state) => state.persons).persons;
 

@@ -12,11 +12,7 @@ import {
 import { clearPersons } from "@/lib/features/persons/persons-slice";
 import CircularProgressBar from "../_components/progress-bars/circular-progress-bar";
 
-export default function SavedPersonsPage({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SavedPersonsPage({}: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
   const savedPersons = useAppSelector((state) => state.persons).persons;
 
