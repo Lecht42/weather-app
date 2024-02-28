@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface TemperatureProps {
   temperature?: number;
   label?: string;

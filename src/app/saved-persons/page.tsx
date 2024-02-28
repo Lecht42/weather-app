@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Layout from "../page";
 import CardList from "../_components/cards-list/card-list";

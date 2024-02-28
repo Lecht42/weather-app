@@ -1,3 +1,4 @@
+import React from 'react';
 import { LoadScript } from "@react-google-maps/api";
 import NavBar from "./_components/navbar/navbar";
 import CircularProgressBar from "./_components/progress-bars/circular-progress-bar";

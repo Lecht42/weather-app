@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, ReactNode } from "react";
+import React from "react";
 import { ButtonProps } from "./button";
 
 const SecondaryButton: React.FC<ButtonProps> = ({
