@@ -5,7 +5,7 @@ export default function convertNumberToTime(hour: number): string {
 
     const period = hour < 12 ? "AM" : "PM";
 
-    const hour12 = hour % 12 || 12; // Converts 0 and 12 to 12, for 12AM and 12PM
+    const hour12 = hour % 12 || 12; 
 
     return `${hour12} ${period}`;
   }

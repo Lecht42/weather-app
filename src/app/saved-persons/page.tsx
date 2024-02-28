@@ -4,7 +4,12 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Layout from "../page";
 import CardList from "../_components/cards-list/card-list";
 import { useEffect } from "react";
-import { tryLoadPersons } from "@/lib/features/actions/saga-actions";
+import {
+  tryLoadPersons,
+  tryReplaceSavedPersons,
+  tryUpdateWeather,
+} from "@/lib/features/actions/saga-actions";
+import { clearPersons } from "@/lib/features/persons/persons-slice";
 
 export default function SavedPersonsPage({
   children,
@@ -16,7 +21,17 @@ export default function SavedPersonsPage({
 
   useEffect(() => {
     dispatch(tryLoadPersons(null));
-  }, [dispatch]);
+    const updater = setInterval(
+      () => dispatch(tryUpdateWeather(savedPersons)),
+      300000
+    );
+
+    return () => {
+      clearInterval(updater);
+      tryReplaceSavedPersons(savedPersons);
+      dispatch(clearPersons(null));
+    };
+  }, []);
 
   return (
     <Layout>

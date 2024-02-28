@@ -23,6 +23,8 @@ export default function WeatherModal({
 }: WeatherModalProps) {
   const cancelButtonRef = useRef(null);
 
+  if (!weather) return <></>;
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog

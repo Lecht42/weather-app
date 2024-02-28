@@ -1,4 +1,5 @@
-import { WeatherResult } from "../intefaces";
+import { Weather, WeatherResult } from "../intefaces";
+import weatherCodes from "@/lib/json/weather-codes.json" assert { type: "json" };
 
 export default class WeatherData {
   data: WeatherResult;
@@ -25,6 +26,21 @@ export default class WeatherData {
         temperature2mMax: daily.variables(0)!.valuesArray()!,
         temperature2mMin: daily.variables(1)!.valuesArray()!,
       },
+    };
+  }
+
+  toPersonalWeather(): Weather {
+    return {
+      temp: Math.round(this.data.current.temperature2m),
+      minTemp: Math.round(this.data.daily.temperature2mMin[0]),
+      maxTemp: Math.round(this.data.daily.temperature2mMax[0]),
+      weatherIconUrl:
+        weatherCodes[
+          this.data.current.weatherCode.toString() as keyof typeof weatherCodes
+        ].day.image,
+      hourlyTemp: Array.from(
+        this.data.hourly.temperature2m.map((e) => Math.round(e))
+      ),
     };
   }
 }

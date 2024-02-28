@@ -16,4 +16,20 @@ export default class Storage {
 
     localStorage.setItem(storageKeyName, JSON.stringify(loaded));
   }
+
+  static savePersons(person: Person[]) {
+    const loaded = this.loadPersons();
+    const toSave = loaded.concat(person);
+
+    localStorage.setItem(storageKeyName, JSON.stringify(toSave));
+  }
+
+  static replacePersons(persons: Person[]) {
+    this.clear();
+    this.savePersons(persons);
+  }
+
+  static clear() {
+    localStorage.setItem(storageKeyName, JSON.stringify([]));
+  }
 }
