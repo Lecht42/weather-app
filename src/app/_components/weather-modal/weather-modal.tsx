@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Person } from "@/lib/intefaces";
@@ -67,36 +67,44 @@ export default function WeatherModal({
                   </div>
                   {weather ? (
                     <>
-                      <div className="flex items-center border-2 rounded-lg my-4 p-2">
-                        <Image
-                          width={WEATHER_ICON_SIZE}
-                          height={WEATHER_ICON_SIZE}
-                          src={weather.weatherIconUrl}
-                          alt="Icon of weather"
-                        />
-                        <Temperature
-                          temperature={weather.temp}
-                          label="current"
-                        />
-                        <div className="flex flex-col grow items-center">
-                          <Temperature
-                            temperature={weather.maxTemp}
-                            label="max"
+                      <div className="border rounded-lg my-2">
+                        <div className="flex items-center p-2">
+                          <Image
+                            width={WEATHER_ICON_SIZE}
+                            height={WEATHER_ICON_SIZE}
+                            src={weather.weatherIconUrl}
+                            alt="Icon of weather"
                           />
                           <Temperature
-                            temperature={weather.minTemp}
-                            label="min"
+                            temperature={weather.temp}
+                            label="current"
+                          />
+                          <div className="flex flex-col grow items-center">
+                            <Temperature
+                              temperature={weather.maxTemp}
+                              label="max"
+                            />
+                            <Temperature
+                              temperature={weather.minTemp}
+                              label="min"
+                            />
+                          </div>
+                          <div className="hidden sm:block">
+                            <CommentedValue
+                              value={coordinates.latitude}
+                              label="latitude"
+                            />
+                            <CommentedValue
+                              value={coordinates.longitude}
+                              label="longitude"
+                            />
+                          </div>
+                        </div>
+                        <div className="p-3">
+                          <HourlyTemperatureRange
+                            temperatures={weather.hourlyTemp}
                           />
                         </div>
-                        <div className="hidden sm:block">
-                         <CommentedValue value={coordinates.latitude} label="latitude" />
-                         <CommentedValue value={coordinates.longitude} label="longitude"/> 
-                        </div>
-                      </div>
-                      <div className="p-7">
-                        <HourlyTemperatureRange
-                          temperatures={weather.hourlyTemp}
-                        />
                       </div>
                       <Map coordinates={coordinates} photoUrl={photoUrl} />
                     </>
