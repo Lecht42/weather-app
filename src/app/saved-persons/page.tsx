@@ -10,6 +10,7 @@ import {
   tryUpdateWeather,
 } from "@/lib/features/actions/saga-actions";
 import { clearPersons } from "@/lib/features/persons/persons-slice";
+import CircularProgressBar from "../_components/progress-bars/circular-progress-bar";
 
 export default function SavedPersonsPage({
   children,

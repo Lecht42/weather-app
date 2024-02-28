@@ -9,7 +9,7 @@ interface CardListProps {
 
 export default function CardList({ persons }: CardListProps) {
   if (persons.length === 0)
-    return <div className="flex justify-center text-xl">List is empty</div>;
+    return <div className="flex justify-center text-xl">List is empty or loading</div>;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 px-16">
