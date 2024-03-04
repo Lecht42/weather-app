@@ -1,7 +1,7 @@
 import React from "react";
-import { LoadScript } from "@react-google-maps/api";
 import NavBar from "./_components/navbar/navbar";
-import CircularProgressBar from "./_components/progress-bars/circular-progress-bar";
+
+export const UPDATION_INTERVAL = 300000;
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

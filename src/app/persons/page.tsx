@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import Layout from "../page";
+import Layout, { UPDATION_INTERVAL } from "../page";
 import CardList from "../_components/cards-list/card-list";
 import {
   tryFetchPersons,
@@ -11,6 +11,7 @@ import {
 import { useEffect } from "react";
 import { clearPersons } from "@/lib/features/persons/persons-slice";
 import Button from "../_components/buttons/button";
+import useInterval from "../_hooks/useInterval";
 
 const NUMBER_OF_FETCHING_PERSONS = 12;
 
@@ -18,15 +19,14 @@ export default function PersonsPage({}: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
   const persons = useAppSelector((state) => state.persons).persons;
 
+  useInterval(() => {
+    dispatch(tryUpdateWeather(persons));
+  }, UPDATION_INTERVAL);
+  
   useEffect(() => {
     dispatch(tryFetchPersons(NUMBER_OF_FETCHING_PERSONS));
-    const updater = setInterval(
-      () => dispatch(tryUpdateWeather(persons)),
-      300000
-    );
 
     return () => {
-      clearInterval(updater);
       dispatch(clearPersons(null));
     };
   }, []);

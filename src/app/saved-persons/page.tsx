@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import Layout from "../page";
+import Layout, { UPDATION_INTERVAL } from "../page";
 import CardList from "../_components/cards-list/card-list";
 import { useEffect } from "react";
 import {
@@ -11,20 +11,20 @@ import {
   tryUpdateWeather,
 } from "@/lib/features/actions/saga-actions";
 import { clearPersons } from "@/lib/features/persons/persons-slice";
+import useInterval from "../_hooks/useInterval";
 
 export default function SavedPersonsPage({}: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
   const savedPersons = useAppSelector((state) => state.persons).persons;
 
+  useInterval(() => {
+    dispatch(tryUpdateWeather(savedPersons));
+  }, UPDATION_INTERVAL);
+
   useEffect(() => {
     dispatch(tryLoadPersons(null));
-    const updater = setInterval(
-      () => dispatch(tryUpdateWeather(savedPersons)),
-      300000
-    );
 
     return () => {
-      clearInterval(updater);
       tryReplaceSavedPersons(savedPersons);
       dispatch(clearPersons(null));
     };
